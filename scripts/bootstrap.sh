@@ -12,8 +12,6 @@ fi
 source "$VENV_DIR/bin/activate"
 
 python -m pip install --upgrade pip
-
-# Install project + dev + viz extras (viz is optional, but harmless to include)
 python -m pip install -e ".[dev,viz]"
 
 echo "✅ Environment ready. Activate with: source $VENV_DIR/bin/activate"

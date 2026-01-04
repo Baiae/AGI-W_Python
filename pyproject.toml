@@ -1,11 +1,11 @@
 [project]
 name = "vervaeke-agent"
 version = "0.1.0"
-description = "Vervaeke Agent simulation (persistence, multi-agent, metrics, CLI)"
+description = "Vervaeke Agent simulation scaffold"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-  "pydantic>=2.5",
+  "pydantic>=2,<3",
 ]
 
 [project.optional-dependencies]
@@ -13,9 +13,9 @@ viz = [
   "matplotlib>=3.8",
 ]
 dev = [
-  "ruff>=0.6",
-  "pytest>=8.0",
-  "mypy>=1.8",
+  "ruff>=0.5",
+  "pytest>=8",
+  "mypy>=1.10",
 ]
 
 [project.scripts]
@@ -23,14 +23,15 @@ vervaeke-agent = "vervaeke_agent.__main__:main"
 
 [tool.ruff]
 line-length = 100
+
 target-version = "py310"
 
-[tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
 
 [tool.mypy]
 python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
-disallow_untyped_defs = false
 no_implicit_optional = true
