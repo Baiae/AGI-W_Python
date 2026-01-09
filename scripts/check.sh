@@ -13,5 +13,10 @@ source "$VENV_DIR/bin/activate"
 
 ruff format .
 ruff check .
-pytest
+.venv/bin/python -m pytest -q || rc=$?
+if [ "${rc:-0}" -eq 5 ]; then
+  echo "⚠️  pytest: no tests collected (ok for now)"
+  rc=0
+fi
 mypy .
+exit "${rc:-0}"
